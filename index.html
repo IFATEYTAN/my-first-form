@@ -1,0 +1,360 @@
+<html><head><base href="/"><title>FlowBit Solutions - Customer Survey</title>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    direction: rtl;
+    color: #252423;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px; /* Microsoft Forms is typically narrower */
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.header {
+    background: #464775; /* Microsoft Forms purple */
+    color: white;
+    padding: 2rem;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.header .company {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.header .slogan {
+    font-style: italic;
+    color: #bee3f8;
+}
+
+form {
+    background: white;
+    padding: 2rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.section {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid #e1dfdd;
+    transition: all 0.2s ease;
+}
+
+.section:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #464775;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #252423;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e1dfdd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #464775;
+    box-shadow: 0 0 0 2px rgba(70, 71, 117, 0.2);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f8f8f8;
+    border: 1px solid #e1dfdd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.checkbox-item:hover {
+    background: #f0f0f0;
+    border-color: #464775;
+}
+
+button[type="submit"] {
+    background: #464775;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 2rem;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background: #5c5d9d;
+}
+
+.export-btn {
+    background: white;
+    color: #464775;
+    border: 1px solid #464775;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+}
+
+.export-btn:hover {
+    background: #464775;
+    color: white;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>טופס אפיון צרכים ללקוח</h1>
+            <div class="company">FlowBit Solutions</div>
+            <div class="slogan">AI Solutions That Flow Naturally</div>
+        </header>
+
+        <form id="customerForm" onsubmit="handleSubmit(event)">
+            <div class="section">
+                <h2>פרטי סוכנות הביטוח</h2>
+                <div class="grid">
+                    <div class="form-group">
+                        <label>שם הסוכנות</label>
+                        <input type="text" name="agencyName" required="">
+                    </div>
+                    <div class="form-group">
+                        <label>מספר רישיון סוכנות</label>
+                        <input type="text" name="licenseNumber" required="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>מבנה ארגוני</h2>
+                <div class="grid">
+                    <div class="form-group">
+                        <label>מספר עובדים כולל</label>
+                        <input type="number" name="totalEmployees" required="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>תחומי פעילות</h2>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="activities" value="lifeInsurance"> &nbsp;ביטוח חיים
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="activities" value="healthInsurance"> &nbsp;ביטוח בריאות
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="activities" value="carInsurance"> &nbsp;ביטוח רכב
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="activities" value="homeInsurance"> &nbsp;ביטוח דירה
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="activities" value="businessInsurance"> &nbsp;ביטוח עסקי
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="activities" value="pension"> &nbsp;פנסיוני
+                    </label>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>נתוני תיק</h2>
+                <div class="form-group">
+                    <label>מספר לקוחות פעילים</label>
+                    <input type="number" name="activeClients" required="">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>מערכות קיימות</h2>
+                <div class="form-group">
+                    <label>תוכנת ניהול סוכנות נוכחית</label>
+                    <input type="text" name="currentSoftware">
+                </div>
+                <div class="form-group">
+                    <label>מערכות נוספות בשימוש</label>
+                    <textarea name="additionalSystems"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>אתגרים ודרישות</h2>
+                <div class="form-group">
+                    <label>אתגרים עיקריים בתהליכי העבודה הנוכחיים</label>
+                    <textarea name="mainChallenges" required=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label>תהליכים הדורשים אוטומציה/ייעול</label>
+                    <textarea name="processesToImprove" required=""></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>ציפיות ויעדים</h2>
+                <div class="form-group">
+                    <label>יעדים עסקיים לשנה הקרובה</label>
+                    <textarea name="businessGoals" required=""></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>זמן הטמעה מצופה</label>
+                    <div class="selection-grid">
+                        <div class="selection-card" onclick="selectImplementation(this, '1month')">
+                            <div class="card-content">
+                                <span>עד חודש</span>
+                            </div>
+                        </div>
+                        <div class="selection-card" onclick="selectImplementation(this, '1-3months')">
+                            <div class="card-content">
+                                <span>1-3 חודשים</span>
+                            </div>
+                        </div>
+                        <div class="selection-card" onclick="selectImplementation(this, '3-6months')">
+                            <div class="card-content">
+                                <span>3-6 חודשים</span>
+                            </div>
+                        </div>
+                        <div class="selection-card" onclick="selectImplementation(this, '6months+')">
+                            <div class="card-content">
+                                <span>מעל 6 חודשים</span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="implementationTime" id="implementationTime" required="">
+                </div>
+
+                <div class="form-group">
+                    <label>דחיפות הפרויקט</label>
+                    <div class="priority-slider">
+                        <input type="range" min="1" max="4" value="2" class="slider" id="urgencySlider">
+                        <div class="priority-labels">
+                            <span>נמוכה</span>
+                            <span>בינונית</span>
+                            <span>גבוהה</span>
+                            <span>גבוהה מאוד</span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="urgency" id="urgency" required="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>הערות נוספות</label>
+                <textarea name="additionalNotes"></textarea>
+            </div>
+
+            <button type="submit">שלח טופס</button>
+            <button type="button" class="export-btn" onclick="exportToPDF()">יצוא ל-PDF</button>
+        </form>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Convert activities to array
+            data.activities = Array.from(formData.getAll('activities'));
+            
+            console.log('Form Data:', data);
+            
+            // Here you would typically send the data to your server
+            alert('הטופס נשלח בהצלחה!');
+        }
+
+        function selectImplementation(element, value) {
+            document.querySelectorAll('.selection-card').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('implementationTime').value = value;
+        }
+
+        // Add event listener for urgency slider
+        document.getElementById('urgencySlider').addEventListener('input', function(e) {
+            const urgencyValues = ['low', 'medium', 'high', 'veryHigh'];
+            document.getElementById('urgency').value = urgencyValues[e.target.value - 1];
+        });
+
+        // Add PDF export functionality
+        function exportToPDF() {
+            const formData = new FormData(document.getElementById('customerForm'));
+            const data = Object.fromEntries(formData);
+            
+            // Here you would implement PDF generation
+            // You could use a library like jsPDF or make a server request
+            // For now, we'll just show an alert
+            alert('הטופס יישלח כקובץ PDF');
+        }
+    </script>
+</body></html>
